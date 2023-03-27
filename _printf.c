@@ -10,10 +10,9 @@
   */
 int _printf(const char *format, ...)
 {
-	char c, *s;
+	va_list args;
 	const char *p = format;
 	int chars_printed = 0;
-	va_list args;
 
 	va_start(args, format);
 
@@ -24,13 +23,13 @@ int _printf(const char *format, ...)
 			++p;
 			if (*p == 'c')
 			{
-				c = va_arg(args, int);
+				char c = va_arg(args, int);
 				putchar(c);
 				++chars_printed;
 			}
 			else if (*p == 's')
 			{
-				*s = va_arg(args, char *);
+				char *str = va_arg(args, char *);
 				fputs(str, stdout);
 				chars_printed += strlen(str);
 			}
