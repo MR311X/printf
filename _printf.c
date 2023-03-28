@@ -1,6 +1,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 
 /**
   * _printf - prints characters to standard output
@@ -12,7 +13,7 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	const char *p = format;
-	int printed_char = 0;
+	unsigned int printed_char = 0;
 
 	va_start(args, format);
 	while (*p != '\0')
@@ -24,7 +25,7 @@ int _printf(const char *format, ...)
 			{
 				char c = va_arg(args, int);
 
-				putchar(c);
+				_putchar(c);
 				++printed_char;
 			}
 			else if (*p == 's')
@@ -36,13 +37,13 @@ int _printf(const char *format, ...)
 			}
 			else if (*p == '%')
 			{
-				putchar('%');
+				_putchar('%');
 				++printed_char;
 			}
 		}
 		else
 		{
-			putchar(*p);
+			_putchar(*p);
 			++printed_char;
 		}
 		++p;
@@ -50,4 +51,15 @@ int _printf(const char *format, ...)
 	va_end(args);
 
 	return (printed_char);
+}
+
+/**
+ * _putchar - putchar function
+ * @c: our character to print
+ * Return: integer
+ */
+
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
 }
