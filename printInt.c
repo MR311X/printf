@@ -3,7 +3,7 @@
 #include <string.h>
 
 /**
- * print_int - prints an integer to stdout
+ * printInt - prints an integer to stdout
  * @args: the va_list containing the integer to print
  * @printed: the running count of printed characters
  * Return: the updated count of printed characters
