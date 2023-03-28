@@ -11,7 +11,7 @@
 
 int printInt(va_list args, int printed)
 {
-	int num = var_arg(args, int);
+	int num = va_arg(args, int);
 	char num_str[20];
 
 	sprintf(num_str, "%d", num);
