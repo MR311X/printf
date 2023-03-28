@@ -12,10 +12,9 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	const char *p = format;
-	int chars_printed = 0;
+	int printed_char = 0;
 
 	va_start(args, format);
-
 	while (*p != '\0')
 	{
 		if (*p == '%')
@@ -24,29 +23,31 @@ int _printf(const char *format, ...)
 			if (*p == 'c')
 			{
 				char c = va_arg(args, int);
+
 				putchar(c);
-				++chars_printed;
+				++printed_char;
 			}
 			else if (*p == 's')
 			{
 				char *str = va_arg(args, char *);
+
 				fputs(str, stdout);
-				chars_printed += strlen(str);
+				printed_char += strlen(str);
 			}
 			else if (*p == '%')
 			{
 				putchar('%');
-				++chars_printed;
+				++printed_char;
 			}
 		}
 		else
 		{
 			putchar(*p);
-			++chars_printed;
+			++printed_char;
 		}
 		++p;
 	}
 	va_end(args);
 
-	return (chars_printed);
+	return (printed_char);
 }
