@@ -21,17 +21,13 @@ int _printf(const char *format, ...)
 		{
 			++p;
 			if (*p == 'c')
-			{
 				printed_char = printChar(args, printed_char);
-			}
 			else if (*p == 's')
-			{
 				printed_char = printStr(args, printed_char);
-			}
 			else if (*p == 'd' || *p == 'i')
-			{
 				printed_char = printInt(args, printed_char);
-			}
+			else if (*p == 'b')
+				printed_char = printBinary(args, printed_char);
 			else if (*p == '%')
 			{
 				putchar('%');
