@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include "main.h"
 
 /**
   * _printf - prints characters to standard output
