@@ -26,6 +26,14 @@ int _printf(const char *format, ...)
 				printed_char = printStr(args, printed_char);
 			else if (*p == 'd' || *p == 'i')
 				printed_char = printInt(args, printed_char);
+			else if (*p == 'u')
+				printed_char = printUsign(args, printed_char);
+			else if (*p == 'o')
+				printed_char = printOctal(args, printed_char);
+			else if (*p == 'x')
+				printed_char = printHexLow(args, printed_char);
+			else if (*p == 'X')
+				printed_char = printHexUp(args, printed_char);
 			else if (*p == 'b')
 				printed_char = printBinary(args, printed_char);
 			else if (*p == '%')
