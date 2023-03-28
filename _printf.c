@@ -1,7 +1,6 @@
 #include <stdarg.h>
 #include <stdio.h>
-#include <string.h>
-#include <unistd.h>
+#include "main.h"
 
 /**
   * _printf - prints characters to standard output
@@ -23,17 +22,15 @@ int _printf(const char *format, ...)
 			++p;
 			if (*p == 'c')
 			{
-				char c = va_arg(args, int);
-
-				putchar(c);
-				++printed_char;
+				printed_char = printChar(args, printed_char);
 			}
 			else if (*p == 's')
 			{
-				char *str = va_arg(args, char *);
-
-				fputs(str, stdout);
-				printed_char += strlen(str);
+				printed_char = printStr(args, printed_char);
+			}
+			else if (*p == 'd' || *p == 'i')
+			{
+				printed_char = printInt(args, printed_char);
 			}
 			else if (*p == '%')
 			{
