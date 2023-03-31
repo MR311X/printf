@@ -6,7 +6,7 @@
  * Return: a pointer to the corresponding print function, or NULL if not found
  */
 
-print_func getSpecifier(char specifier)
+int getSpecifier(char specifier)
 {
 	int i;
 	specifier_t specifiers[] = {
