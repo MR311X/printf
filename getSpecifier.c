@@ -5,7 +5,9 @@
 /**
  * getSpecifier - gets the print function for a given specifier
  * @specifier: the format specifier character
- * Return: a pointer to the corresponding print function, or NULL if not found
+ * @args: arguments to be printed
+ * @printed_char: number of characters printed
+ * Return: a pointer to the corresponding print function, or -1 if not found
  */
 
 int getSpecifier(char specifier, va_list args, unsigned int printed_char)
