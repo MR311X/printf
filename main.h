@@ -4,6 +4,18 @@
 /* inbuilt functions */
 #include <stdarg.h>
 
+/**
+ * struct specifier - Struct specifier
+ * @spec: The conversion specifier
+ * @func: The function associated
+ */
+
+typedef struct specifier
+{
+	char spec;
+	int (*func)(va_list, int);
+} specifier_t;
+
 /* print functions */
 int _printf(const char *format, ...);
 int printChar(va_list args, int printed);
