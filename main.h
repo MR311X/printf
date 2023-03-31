@@ -26,6 +26,6 @@ int printUsign(va_list args, int printed);
 int printOctal(va_list args, int printed);
 int printHexLow(va_list args, int printed);
 int printHexUp(va_list args, int printed);
-int getSpecifier(char specifier);
+int getSpecifier(char specifier, va_list args, unsigned int printed_char);
 
 #endif

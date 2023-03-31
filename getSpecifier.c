@@ -30,5 +30,5 @@ int getSpecifier(char specifier, va_list args, unsigned int printed_char)
 			return (specifiers[i].func(args, printed_char));
 	}
 
-	return (NULL);
+	return (-1);
 }
