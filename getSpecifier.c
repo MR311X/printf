@@ -22,6 +22,7 @@ int getSpecifier(char specifier, va_list args, unsigned int printed_char)
 		{'o', printOctal},
 		{'x', printHexLow},
 		{'X', printHexUp},
+		{'S', printS},
 		/*{'%', printPercent},*/
 		{'\0', NULL}
 	};
