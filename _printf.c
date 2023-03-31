@@ -12,42 +12,26 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	const char *p = format;
+	int i = 0;
 	unsigned int printed_char = 0;
 
 	va_start(args, format);
-	while (*p != '\0')
+	while (format && format[i])
 	{
-		if (*p == '%')
+		if (format[i] == '%')
 		{
-			++p;
-			if (*p == 'c')
-				printed_char = printChar(args, printed_char);
-			else if (*p == 's')
-				printed_char = printStr(args, printed_char);
-			else if (*p == 'd' || *p == 'i')
-				printed_char = printInt(args, printed_char);
-			else if (*p == 'u')
-				printed_char = printUsign(args, printed_char);
-			else if (*p == 'o')
-				printed_char = printOctal(args, printed_char);
-			else if (*p == 'x')
-				printed_char = printHexLow(args, printed_char);
-			else if (*p == 'X')
-				printed_char = printHexUp(args, printed_char);
-			else if (*p == 'b')
-				printed_char = printBinary(args, printed_char);
-			else if (*p == '%')
-			{
-				putchar('%');
-				++printed_char;
-			}
+			i++;
+			if (format[i] == '\0')
+				return (-1);
+			printed_char = getSpecifier(format[i], args, printed_char);
+			i++;
 		}
 		else
 		{
-			putchar(*p);
-			++printed_char;
+			putchar(format[i]);
+			printed_char++;
+			i++;
 		}
-		++p;
 	}
 	va_end(args);
 
